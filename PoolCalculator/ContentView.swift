@@ -21,7 +21,33 @@ struct ContentView: View {
     
     var body: some View {
         List {
-            Text("T")
+            Section(header: Text("Pool Dimensions")) {
+                HStack {
+                    Text("Length")
+                    TextField("Enter length", text: $length)
+                        
+                }
+                
+                HStack {
+                    Text("Width")
+                    TextField("Enter width", text: $width)
+                        
+                }
+                
+                HStack {
+                    Text("Height")
+                    TextField("Enter height", text: $height)
+                        
+                }
+            }
+            
+            Section(header: Text("Water Cost")) {
+                HStack {
+                    Text("Cost per cubic meter")
+                    TextField("Enter water cost", text: $waterCost)
+                        
+                }
+            }
         }
         
         .navigationTitle("Pool Calculator")
