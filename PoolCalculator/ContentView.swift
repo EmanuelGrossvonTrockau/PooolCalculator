@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    //MARK: Stored Properties
+    @State  var length: String = ""
+    @State  var width: String = ""
+    @State  var height: String = ""
+    @State  var waterCost: String = ""
+    @State  var area: Double = 0.0
+    @State  var totalCost: Double = 0.0
+    
+    
+    
+    
     var body: some View {
-        VStack {
+        List {
             Text("T")
         }
         
