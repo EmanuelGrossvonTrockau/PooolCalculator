@@ -11,7 +11,17 @@ struct HistoryView: View {
     @Binding var history: [Result]
     
     var body: some View {
-        Text("Hello")
+        VStack {
+            
+            Text("History")
+                .font(.headline.smallCaps())
+                .padding()
+            
+            List(history.reversed()) { somePriorResult in
+                ResultView(priorResult: somePriorResult)
+            }
+
+        }
     }
 }
 
