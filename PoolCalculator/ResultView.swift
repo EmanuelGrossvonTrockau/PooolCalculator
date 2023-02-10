@@ -61,7 +61,7 @@ struct ResultView: View {
                 
                 Text("\(priorResult.area)m3")
                 
-                Text("x \(priorResult.intoliter)L")
+                Text("x \(priorResult.intoliter)")
                 
                 Text("============")
                 

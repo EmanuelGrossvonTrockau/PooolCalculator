@@ -8,16 +8,55 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     //MARK: Stored Properties
     @State  var length: String = ""
     @State  var width: String = ""
     @State  var height: String = ""
     @State  var waterCost: String = ""
-    @State  var area: Double = 0.0
-    @State  var totalCost: Double = 0.0
+
     
+    @Binding var history: [Result]
+    var lengthAsDouble: Double? {
+        guard let unrappedlength = Double(length) else {
+            return nil
+        }
+        return unrappedlength
+    }
     
+    var widthASDouble: Double? {
+        guard let unrappedwidth = Double(width) else {
+            return nil
+        }
+        return unrappedwidth
+    }
+        
+    var heightAsDouble: Double? {
+        guard let unrappedheight = Double(height) else {
+            return nil
+        }
+        return unrappedheight
+    }
+    var watercostAsDouble: Double? {
+        guard let unrappedwatercost = Double(waterCost) else {
+            return nil
+        }
+        return unrappedwatercost
+    }
+        
+        
     
+    var result: (area: String, waterNeeded: String, totalcost:String) {
+        guard let lenght = lengthAsDouble, let width = widthASDouble, let height = heightAsDouble, let waterCost = watercostAsDouble else {
+            return ("Erros","","")
+        }
+        let area = (lenght * width * height)
+        let waterNeeded = area * 1000
+        let totalcost = area * waterCost
+        return ("\(area.formatted(.number.precision(.fractionLength(1))))",
+                "\(waterNeeded.formatted(.number.rounded(rule: .up, increment: 1)))",
+                "\(waterCost.formatted(.number.precision(.fractionLength(1)))))")
+    }
     
     var body: some View {
         
@@ -61,7 +100,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            ContentView()
+            ContentView( history: Binding.constant(historyForPreviw))
         }
     }
 }
