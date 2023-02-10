@@ -20,7 +20,7 @@ struct PoolCalculatorApp: App {
                     }
                  HistoryView(history: $history)
                     .tabItem {
-                        Image(systemName: "Clock.fill")
+                        Image(systemName: "clock.fill")
                         Text("History")
                     }
                 

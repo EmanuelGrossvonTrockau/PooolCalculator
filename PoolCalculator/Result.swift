@@ -11,16 +11,12 @@ struct Result: Identifiable {
     
     let id = UUID()
     let area: String
-    let watercost: String
     let waterNeeded: String
     let totalcost: String
-    let intoliter: String
-    
+        
 }
 var ResultForPreview = Result(area: "0.00",
-                              watercost: "0.00",
                               waterNeeded: "0.00",
-                              totalcost: "0.00",
-                              intoliter: "0.00")
+                              totalcost: "0.00")
 
 var historyForPreviw = [ResultForPreview]

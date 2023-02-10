@@ -49,7 +49,7 @@ struct ResultView: View {
                 
                 Text("\(priorResult.area)m3")
                 
-                Text("x  $  \(priorResult.watercost)")
+                Text("\(priorResult.totalcost)")
                 
                 Text("=============")
                 
@@ -61,7 +61,7 @@ struct ResultView: View {
                 
                 Text("\(priorResult.area)m3")
                 
-                Text("x \(priorResult.intoliter)")
+                Text("\(priorResult.waterNeeded)")
                 
                 Text("============")
                 

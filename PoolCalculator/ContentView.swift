@@ -52,7 +52,7 @@ struct ContentView: View {
         }
         let area = (lenght * width * height)
         let waterNeeded = area * 1000
-        let totalcost = waterCost * area
+        let totalcost = (waterCost * area)
         return ("\(area.formatted(.number.precision(.fractionLength(0))))",
                 "\(waterNeeded.formatted(.number.rounded(rule: .up, increment: 1)))",
                 "\(waterCost.formatted(.number.precision(.fractionLength(2))))")
@@ -98,12 +98,35 @@ struct ContentView: View {
                 }
                 HStack{
                     Text("Water needed: \(result.waterNeeded)L")
+                    
                 }
+                
             }
-        
+            
+            HStack{
+                
+                Button(action: {
+                    let priorResult = Result(area: result.area, waterNeeded: result.waterNeeded, totalcost: result.totalcost)
+                    history.append(priorResult)
+                }, label: {
+                    Text("Save")
+                        .font(.headline.uppercaseSmallCaps())
+                })
+                .buttonStyle(.bordered)
+            }
+            
+            
+            
+            
+            
+            
         }
-        
         .navigationTitle("Pool Calculator")
+       
+        
+       
+        
+        
             }
 }
 
