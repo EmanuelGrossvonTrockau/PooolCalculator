@@ -46,14 +46,14 @@ struct ContentView: View {
         
         
     
-    var result: (area: String, waterNeeded: String, totalcost:String) {
+    var result: (area: String, waterNeeded: String, totalcost: String) {
         guard let lenght = lengthAsDouble, let width = widthASDouble, let height = heightAsDouble, let waterCost = watercostAsDouble else {
             return ("","","")
         }
         let area = (lenght * width * height)
         let waterNeeded = area * 1000
-        let totalcost = (waterCost * area)
-        return ("\(area.formatted(.number.precision(.fractionLength(0))))",
+        let totalcost = (waterCost) * area
+        return ("\(area.formatted(.number.precision(.fractionLength(2))))",
                 "\(waterNeeded.formatted(.number.rounded(rule: .up, increment: 1)))",
                 "\(waterCost.formatted(.number.precision(.fractionLength(2))))")
     }
