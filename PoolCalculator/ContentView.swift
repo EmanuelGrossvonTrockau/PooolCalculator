@@ -48,14 +48,14 @@ struct ContentView: View {
     
     var result: (area: String, waterNeeded: String, totalcost:String) {
         guard let lenght = lengthAsDouble, let width = widthASDouble, let height = heightAsDouble, let waterCost = watercostAsDouble else {
-            return ("Erros","","")
+            return ("","","")
         }
         let area = (lenght * width * height)
         let waterNeeded = area * 1000
-        let totalcost = area * waterCost
-        return ("\(area.formatted(.number.precision(.fractionLength(1))))",
+        let totalcost = waterCost * area
+        return ("\(area.formatted(.number.precision(.fractionLength(0))))",
                 "\(waterNeeded.formatted(.number.rounded(rule: .up, increment: 1)))",
-                "\(waterCost.formatted(.number.precision(.fractionLength(1)))))")
+                "\(waterCost.formatted(.number.precision(.fractionLength(2))))")
     }
     
     var body: some View {
@@ -89,7 +89,17 @@ struct ContentView: View {
                     TextField("Enter water cost", text: $waterCost)
                 }
             }
-            
+            Section(header: Text("Result")) {
+                HStack{
+                    Text("Area: \(result.area)m3")
+                    }
+                HStack{
+                    Text("Total cost: $\(result.totalcost)")
+                }
+                HStack{
+                    Text("Water needed: \(result.waterNeeded)L")
+                }
+            }
         
         }
         
@@ -100,7 +110,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            ContentView( history: Binding.constant(historyForPreviw))
+            ContentView( history: Binding.constant([]))
         }
     }
 }
